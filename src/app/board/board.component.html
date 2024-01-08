@@ -1,0 +1,22 @@
+<div class="board-container">
+    <button class="roll-dice-button" (click)="rollDice()">Roll Dice</button>
+
+    <div class="controls">
+        <img *ngIf="diceImageSrc" [src]="diceImageSrc" alt="Dice" class="dice-image" [class.flipping]="isFlipping" (click)="rollDice()" />
+    </div>
+  
+    <div class="board">
+      <div *ngFor="let row of board; let i = index" class="row">
+        <div *ngFor="let cell of row; let j = index" class="cell" [style.backgroundColor]="colors[i][j]">
+          {{ cell }}
+          <div *ngIf="isSnakeCell(i, j)" class="snake-label" [class.visible]="isSnakeVisible(i, j)">
+            →{{ getSnakeDestination(i, j) }}
+          </div>
+          <div *ngIf="isLadderCell(i, j)" class="ladder-label" [class.visible]="isLadderVisible(i, j)">
+              →{{ getLadderDestination(i, j) }}
+          </div>
+          <div *ngIf="isPlayerCell(i, j)" class="player-label">🅟</div>
+        </div>
+      </div>
+    </div>
+  </div>

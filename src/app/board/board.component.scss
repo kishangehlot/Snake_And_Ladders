@@ -1,0 +1,115 @@
+/* board.component.scss */
+
+.board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust the height to your preference */
+  }
+  
+  .board {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  .controls {
+    margin-top: 20px;
+    margin-right: 10px;
+    text-align: center;
+  }
+  
+  .dice-image {
+    cursor: pointer;
+    width: 80px; /* Adjust the size as needed */
+    height: 80px; /* Adjust the size as needed */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+  
+    &:hover {
+      transform: scale(1.1);
+    }
+    &.flipping {
+        animation: flip 0.6s ease-in-out;
+      }
+  }
+  @keyframes flip {
+    0% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(180deg);
+    }
+    100% {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  .roll-dice-button {
+    margin: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  
+    &:hover {
+      background-color: #45a049;
+    }
+  }
+  
+  .dice-result {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .cell {
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  
+    .snake-label,
+    .ladder-label {
+      position: absolute;
+      font-size: 12px;
+      color: #000;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  .snake-label.visible::before,
+  .ladder-label.visible::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .snake-label.visible::before {
+    border-top: 10px solid red;
+  }
+  
+  .ladder-label.visible::before {
+    border-bottom: 10px solid rgb(1, 67, 1);
+  }
+  
+  
